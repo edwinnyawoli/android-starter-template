@@ -1,0 +1,75 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext.versions = [
+            'compileSdk'          : 26,
+            'buildTools'          : '26.0.2',
+            'minSdk'              : 16,
+            'targetSdk'           : 26,
+            'supportLib'          : '27.0.2',
+            'kotlin'              : '1.1.51',
+
+            //Dependencies
+            'junit'               : '4.12',
+            'okhttp3'             : [
+                    'loggingInterceptor': '3.9.1'
+            ],
+            'retrofit'            : '2.3.0',
+            'timber'              : '4.5.1',
+            'firebase'            : '11.8.0',
+            'dagger'              : '2.13',
+            'rx'                  : [
+                    'java'   : '2.1.6',
+                    'android': '2.0.1'
+            ],
+            'room'                : '1.0.0',
+            'auto_value'          : '1.5.2',
+            'auto_value_ext'      : [
+                    'parcel': '0.2.6',
+                    'gson'  : '0.6.0'
+            ],
+            'threetenabp'         : '1.0.5',
+            'mvpskeleton'         : 'v1.0.0',
+            'lombok'              : '1.16.18',
+            'permissiondispatcher': '3.1.0',
+
+            // Test dependencies
+            'test'                : [
+                    'runner'  : '1.0.1',
+                    'espresso': '3.0.1',
+            ]
+
+    ]
+
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url 'https://jitpack.io'
+        }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven {
+            url 'https://jitpack.io'
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
