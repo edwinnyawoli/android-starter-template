@@ -1,6 +1,11 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'io.fabric'
+apply from: "$project.rootDir/tools/script-git-version.gradle"
+
+def props = new Properties()
+file("build.properties").withInputStream { props.load(it) }
 
 android {
     compileSdkVersion versions.android.compileSdk
@@ -9,8 +14,10 @@ android {
         applicationId "com.edwinnyawoli.templateapplication"
         minSdkVersion versions.android.minSdk
         targetSdkVersion versions.android.targetSdk
-        versionCode 1
-        versionName "1.0.0"
+        versionCode gitVersionCodeTime
+        versionName gitVersionName
+
+        manifestPlaceholders = [fabricApiKey: props.getProperty("FABRIC_API_KEY")]
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
@@ -76,6 +83,12 @@ dependencies {
 
     implementation "com.github.hotchemi:permissionsdispatcher:${versions.deps.permissiondispatcher}"
     annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:${versions.deps.permissiondispatcher}"
+
+    implementation "com.github.Kennyc1012:MultiStateView:${versions.deps.multistateview}"
+
+    implementation("com.crashlytics.sdk.android:crashlytics:${versions.deps.crashlytics}@aar") {
+        transitive = true;
+    }
 
     testImplementation "junit:junit:${versions.deps.test.junit}"
     androidTestImplementation "com.android.support.test:runner:${versions.deps.test.runner}"
