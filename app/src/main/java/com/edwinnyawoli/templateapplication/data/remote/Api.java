@@ -10,7 +10,7 @@ import javax.inject.Qualifier;
  *
  */
 
-public interface ApiService {
+public interface Api {
     /**
      *
      */

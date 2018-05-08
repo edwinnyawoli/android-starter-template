@@ -1,6 +1,6 @@
 package com.edwinnyawoli.templateapplication.di.module;
 
-import com.edwinnyawoli.templateapplication.data.remote.ApiService;
+import com.edwinnyawoli.templateapplication.data.remote.Api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -23,14 +23,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetModule {
     @Provides
     @Singleton
-    static ApiService provideActioService(Gson gson, OkHttpClient okHttpClient, @ApiService.BaseUrl String baseUrl) {
+    static Api provideActioService(Gson gson, OkHttpClient okHttpClient, @Api.BaseUrl String baseUrl) {
         Retrofit retrofitBuilder = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpClient)
                 .build();
-        return retrofitBuilder.create(ApiService.class);
+        return retrofitBuilder.create(Api.class);
     }
 
     @Provides

@@ -1,4 +1,4 @@
-package com.edwinnyawoli.templateapplication.data.security;
+package com.edwinnyawoli.templateapplication.data.model;
 
 /**
  *

@@ -1,4 +1,6 @@
-package com.edwinnyawoli.templateapplication.data.security;
+package com.edwinnyawoli.templateapplication.data.remote;
+
+import com.edwinnyawoli.templateapplication.data.model.User;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
