@@ -16,6 +16,7 @@ android {
         targetSdkVersion versions.android.targetSdk
         versionCode gitVersionCodeTime
         versionName gitVersionName
+        setProperty("archivesBaseName", "app-"  + versionName + "-" + versionCode)
 
         manifestPlaceholders = [fabricApiKey: props.getProperty("FABRIC_API_KEY")]
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -55,8 +56,9 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:${versions.deps.supportLib}"
     implementation "com.android.support:design:${versions.deps.supportLib}"
     implementation "com.android.support:support-v4:${versions.deps.supportLib}"
+    implementation "com.android.support.constraint:constraint-layout:${versions.deps.constraintlayout}"
 
-    implementation "com.squareup.okhttp3:logging-interceptor:${versions.deps.okhttp3.loggingInterceptor}"
+    implementation "com.squareup.okhttp3:logging-interceptor:${versions.deps.okhttp3.logginginterceptor}"
     implementation "com.squareup.retrofit2:retrofit:${versions.deps.retrofit}"
     implementation "com.squareup.retrofit2:converter-gson:${versions.deps.retrofit}"
     implementation "com.squareup.retrofit2:adapter-rxjava2:${versions.deps.retrofit}"
@@ -69,7 +71,6 @@ dependencies {
     annotationProcessor "org.projectlombok:lombok:${versions.deps.lombok}"
 
     implementation "com.google.dagger:dagger:${versions.deps.dagger}"
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     annotationProcessor "com.google.dagger:dagger-compiler:${versions.deps.dagger}"
     annotationProcessor "com.google.dagger:dagger-android-processor:${versions.deps.dagger}"
     implementation "com.google.dagger:dagger-android-support:${versions.deps.dagger}"

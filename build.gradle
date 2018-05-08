@@ -9,15 +9,16 @@ buildscript {
                     'targetSdk' : 27,
             ],
             'tools'  : [
-                    'gradle': '3.0.1',
+                    'gradle': '3.1.1',
                     'kotlin': '1.1.51',
                     'fabric': '1.24.1',
 
             ],
             'deps'   : [
-                    'supportLib'          : '27.1.0',
+                    'supportLib'          : '27.1.1',
+                    'constraintlayout'   : '1.1.0',
                     'okhttp3'             : [
-                            'loggingInterceptor': '3.9.1'
+                            'logginginterceptor': '3.9.1'
                     ],
                     'kotlin'              : '1.1.51',
                     'retrofit'            : '2.3.0',
