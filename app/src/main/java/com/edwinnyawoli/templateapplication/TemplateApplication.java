@@ -13,11 +13,15 @@ import timber.log.Timber;
  */
 
 public class TemplateApplication extends DaggerApplication {
-    private HttpLoggingInterceptor.Level loggingLevel;
 
     @Override
     public void onCreate() {
         super.onCreate();
+    }
+
+    @Override
+    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
+        HttpLoggingInterceptor.Level loggingLevel;
 
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
@@ -26,10 +30,7 @@ public class TemplateApplication extends DaggerApplication {
             Timber.plant(new CrashlyticsTree(this));
             loggingLevel = HttpLoggingInterceptor.Level.NONE;
         }
-    }
 
-    @Override
-    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
         return DaggerAppComponent.builder()
                 .loggingLevel(loggingLevel)
                 .build();
