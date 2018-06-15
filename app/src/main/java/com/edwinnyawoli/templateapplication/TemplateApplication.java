@@ -1,29 +1,24 @@
 package com.edwinnyawoli.templateapplication;
 
-import android.app.Application;
-
-import com.edwinnyawoli.templateapplication.di.AppComponent;
 import com.edwinnyawoli.templateapplication.di.DaggerAppComponent;
 import com.edwinnyawoli.templateapplication.log.CrashlyticsTree;
 
+import dagger.android.AndroidInjector;
+import dagger.android.support.DaggerApplication;
 import okhttp3.logging.HttpLoggingInterceptor;
 import timber.log.Timber;
 
 /**
- * TODO Add crashlytics support.
+ *
  */
 
-public class TemplateApplication extends Application {
-    private AppComponent appComponent;
-
-    public AppComponent getAppComponent() {
-        return appComponent;
-    }
+public class TemplateApplication extends DaggerApplication {
+    private HttpLoggingInterceptor.Level loggingLevel;
 
     @Override
     public void onCreate() {
         super.onCreate();
-        HttpLoggingInterceptor.Level loggingLevel;
+
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
             loggingLevel = HttpLoggingInterceptor.Level.BODY;
@@ -31,9 +26,11 @@ public class TemplateApplication extends Application {
             Timber.plant(new CrashlyticsTree(this));
             loggingLevel = HttpLoggingInterceptor.Level.NONE;
         }
+    }
 
-        appComponent = DaggerAppComponent.builder()
-                .context(this)
+    @Override
+    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
+        return DaggerAppComponent.builder()
                 .loggingLevel(loggingLevel)
                 .build();
     }

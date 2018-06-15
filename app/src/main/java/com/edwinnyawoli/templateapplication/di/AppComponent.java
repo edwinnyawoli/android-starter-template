@@ -1,28 +1,23 @@
 package com.edwinnyawoli.templateapplication.di;
 
-import android.content.Context;
-
+import com.edwinnyawoli.templateapplication.TemplateApplication;
 import com.edwinnyawoli.templateapplication.di.module.DataModule;
 import com.edwinnyawoli.templateapplication.di.module.NetModule;
 
 import dagger.BindsInstance;
 import dagger.Component;
+import dagger.android.AndroidInjector;
 import okhttp3.logging.HttpLoggingInterceptor;
 
 /**
  *
  */
 @Component(modules = {DataModule.class, NetModule.class})
-public interface AppComponent {
+public interface AppComponent extends AndroidInjector<TemplateApplication> {
 
     @Component.Builder
-    interface Builder {
+    abstract class Builder extends AndroidInjector.Builder<TemplateApplication> {
         @BindsInstance
-        Builder context(Context context);
-
-        @BindsInstance
-        Builder loggingLevel(HttpLoggingInterceptor.Level loggingLevel);
-
-        AppComponent build();
+        public abstract Builder loggingLevel(HttpLoggingInterceptor.Level loggingLevel);
     }
 }
