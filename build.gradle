@@ -16,7 +16,7 @@ buildscript {
             ],
             'deps'   : [
                     'supportLib'          : '27.1.1',
-                    'constraintlayout'   : '1.1.0',
+                    'constraintlayout'    : '1.1.0',
                     'okhttp3'             : [
                             'logginginterceptor': '3.9.1'
                     ],
@@ -29,7 +29,7 @@ buildscript {
                             'java'   : '2.1.6',
                             'android': '2.0.1'
                     ],
-                    'room'                : '1.0.0',
+                    'room'                : '1.1.0',
                     'auto_value'          : '1.5.2',
                     'auto_value_ext'      : [
                             'parcel': '0.2.6',
@@ -40,6 +40,7 @@ buildscript {
                     'lombok'              : '1.16.18',
                     'permissiondispatcher': '3.1.0',
                     'multistateview'      : '1.3.2',
+                    'epoxy'               : '2.12.0',
                     'crashlytics'         : '2.6.8',
 
                     'test'                : [
