@@ -33,6 +33,6 @@ public class TemplateApplication extends DaggerApplication {
 
         return DaggerAppComponent.builder()
                 .loggingLevel(loggingLevel)
-                .build();
+                .create(this);
     }
 }

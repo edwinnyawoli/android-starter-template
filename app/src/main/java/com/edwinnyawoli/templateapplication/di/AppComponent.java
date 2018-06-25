@@ -7,12 +7,17 @@ import com.edwinnyawoli.templateapplication.di.module.NetModule;
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.AndroidInjector;
+import dagger.android.support.AndroidSupportInjectionModule;
 import okhttp3.logging.HttpLoggingInterceptor;
 
 /**
  *
  */
-@Component(modules = {DataModule.class, NetModule.class})
+@Component(modules = {
+        AndroidSupportInjectionModule.class,
+        DataModule.class,
+        NetModule.class}
+)
 public interface AppComponent extends AndroidInjector<TemplateApplication> {
 
     @Component.Builder
