@@ -5,7 +5,7 @@ The structuring of this project is based on what is described
 [here](https://overflow.buffer.com/2016/09/26/android-rethinking-package-structure/)
 with a few modifications.
 
-## Changes to make before using template
+## What to do
 There are a few things you would need to rename before you get started.
 * `TemplateApplication` file
 * `applicationId` in module *build.gradle* file
