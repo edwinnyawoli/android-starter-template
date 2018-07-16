@@ -24,6 +24,10 @@ public class CacheRepository {
         cache.put(key, object);
     }
 
+    public void remove(String key) {
+        cache.remove(key);
+    }
+
     @SuppressWarnings("unchecked")
     public <T> T get(String key) {
         return (T) cache.get(key);
