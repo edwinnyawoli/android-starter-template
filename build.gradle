@@ -46,6 +46,7 @@ buildscript {
                             'junit'   : '4.12',
                             'runner'  : '1.0.1',
                             'espresso': '3.0.1',
+                            'mockito' : '2.19.0'
                     ]
             ]
     ]
