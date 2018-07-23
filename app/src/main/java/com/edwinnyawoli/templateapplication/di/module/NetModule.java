@@ -10,6 +10,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import io.reactivex.Scheduler;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -23,11 +24,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetModule {
     @Provides
     @Singleton
-    static Api provideActioService(Gson gson, OkHttpClient okHttpClient, @Api.BaseUrl String baseUrl) {
+    static Api provideActioService(Gson gson, OkHttpClient okHttpClient, @Api.BaseUrl String baseUrl, @SchedulersModule.IO Scheduler ioScheduler) {
         Retrofit retrofitBuilder = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(ioScheduler))
                 .client(okHttpClient)
                 .build();
         return retrofitBuilder.create(Api.class);
