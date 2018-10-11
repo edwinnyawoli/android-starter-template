@@ -24,7 +24,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NetModule {
     @Provides
     @Singleton
-    static Api provideActioService(Gson gson, OkHttpClient okHttpClient, @Api.BaseUrl String baseUrl, @SchedulersModule.IO Scheduler ioScheduler) {
+    static Api provideApi(Gson gson, OkHttpClient okHttpClient,
+                          @Api.BaseUrl String baseUrl,
+                          @SchedulersModule.IO Scheduler ioScheduler) {
         Retrofit retrofitBuilder = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create(gson))

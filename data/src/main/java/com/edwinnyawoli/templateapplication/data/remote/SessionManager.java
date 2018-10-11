@@ -1,6 +1,6 @@
 package com.edwinnyawoli.templateapplication.data.remote;
 
-import com.edwinnyawoli.templateapplication.data.model.User;
+import com.edwinnyawoli.templateapplication.domain.model.User;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

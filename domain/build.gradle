@@ -1,0 +1,11 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "org.projectlombok:lombok:${versions.deps.lombok}"
+    annotationProcessor "org.projectlombok:lombok:${versions.deps.lombok}"
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"

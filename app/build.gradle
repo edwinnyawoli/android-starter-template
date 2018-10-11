@@ -21,13 +21,6 @@ android {
         manifestPlaceholders = [fabricApiKey: props.getProperty("FABRIC_API_KEY")]
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = ["room.schemaLocation":
-                                     "$projectDir/schemas".toString()]
-            }
-        }
-
         vectorDrawables.useSupportLibrary = true;
     }
 
@@ -49,19 +42,15 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':data')
+    implementation project(':presentation')
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:${versions.deps.kotlin}"
     // Data dependencies
     implementation "org.projectlombok:lombok:${versions.deps.lombok}"
     annotationProcessor "org.projectlombok:lombok:${versions.deps.lombok}"
-    implementation "android.arch.persistence.room:runtime:${versions.deps.room}"
-    annotationProcessor "android.arch.persistence.room:compiler:${versions.deps.room}"
-    implementation "android.arch.persistence.room:rxjava2:${versions.deps.room}"
 
     implementation "io.reactivex.rxjava2:rxandroid:${versions.deps.rx.android}"
-    implementation "io.reactivex.rxjava2:rxjava:${versions.deps.rx.java}"
-
 
     // UI dependencies
     implementation "com.android.support:appcompat-v7:${versions.deps.supportLib}"
@@ -69,25 +58,15 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:${versions.deps.supportLib}"
     implementation "com.android.support:design:${versions.deps.supportLib}"
     implementation "com.android.support:support-v4:${versions.deps.supportLib}"
+    implementation "android.arch.core:runtime:${versions.deps.arch.core}"
     implementation "com.android.support.constraint:constraint-layout:${versions.deps.constraintlayout}"
     implementation "com.jakewharton.threetenabp:threetenabp:${versions.deps.threetenabp}"
     implementation "com.github.edwinnyawoli:mvpskeleton:${versions.deps.mvpskeleton}"
-
     implementation "com.github.hotchemi:permissionsdispatcher:${versions.deps.permissiondispatcher}"
     annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:${versions.deps.permissiondispatcher}"
-
     implementation "com.github.Kennyc1012:MultiStateView:${versions.deps.multistateview}"
-
     implementation "com.airbnb.android:epoxy:${versions.deps.epoxy}"
     annotationProcessor "com.airbnb.android:epoxy-processor:${versions.deps.epoxy}"
-
-
-    // Networking dependencies
-    implementation "com.squareup.okhttp3:logging-interceptor:${versions.deps.okhttp3.logginginterceptor}"
-    implementation "com.squareup.retrofit2:retrofit:${versions.deps.retrofit}"
-    implementation "com.squareup.retrofit2:converter-gson:${versions.deps.retrofit}"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:${versions.deps.retrofit}"
-
 
     // DI dependencies
     implementation "com.google.dagger:dagger:${versions.deps.dagger}"
@@ -95,17 +74,16 @@ dependencies {
     annotationProcessor "com.google.dagger:dagger-android-processor:${versions.deps.dagger}"
     implementation "com.google.dagger:dagger-android-support:${versions.deps.dagger}"
 
-
     // Logging Dependencies
     implementation "com.jakewharton.timber:timber:${versions.deps.timber}"
     implementation("com.crashlytics.sdk.android:crashlytics:${versions.deps.crashlytics}@aar") {
         transitive = true;
     }
 
-
     // Test dependencies
     testImplementation "junit:junit:${versions.deps.test.junit}"
     androidTestImplementation "com.android.support.test:runner:${versions.deps.test.runner}"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${versions.deps.test.espresso}"
     testImplementation "org.mockito:mockito-core:${versions.deps.test.mockito}"
+
 }

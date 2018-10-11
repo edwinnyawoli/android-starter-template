@@ -15,10 +15,10 @@ import dagger.Provides;
  */
 @Module
 public class DataModule {
-
     @Provides
     @Singleton
     static AppDatabase provideAppDatabase(Context context) {
-        return Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, AppDatabase.NAME).build();
+        return Room.databaseBuilder(context.getApplicationContext(),
+                AppDatabase.class, AppDatabase.NAME).build();
     }
 }

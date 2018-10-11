@@ -1,11 +1,11 @@
 package com.edwinnyawoli.templateapplication.di;
 
 import com.edwinnyawoli.templateapplication.TemplateApplication;
-import com.edwinnyawoli.templateapplication.di.module.ActivityModule;
 import com.edwinnyawoli.templateapplication.di.module.DataModule;
-import com.edwinnyawoli.templateapplication.di.module.FragmentModule;
 import com.edwinnyawoli.templateapplication.di.module.NetModule;
 import com.edwinnyawoli.templateapplication.di.module.SchedulersModule;
+import com.edwinnyawoli.templateapplication.di.module.ActivityModule;
+import com.edwinnyawoli.templateapplication.di.module.FragmentModule;
 
 import dagger.BindsInstance;
 import dagger.Component;

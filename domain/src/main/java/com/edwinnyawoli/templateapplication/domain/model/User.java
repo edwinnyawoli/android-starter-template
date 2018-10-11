@@ -1,4 +1,4 @@
-package com.edwinnyawoli.templateapplication.data.model;
+package com.edwinnyawoli.templateapplication.domain.model;
 
 /**
  *
