@@ -23,3 +23,21 @@
 -dontwarn okhttp3.**
 -dontwarn okio.**
 -dontwarn org.codehaus.**
+
+# Retrofit does reflection on generic parameters. InnerClasses is required to use Signature and
+# EnclosingMethod is required to use InnerClasses.
+-keepattributes Signature, InnerClasses, EnclosingMethod
+
+# Guarded by a NoClassDefFoundError try/catch and only used when on the classpath.
+-dontwarn kotlin.Unit
+
+# Top-level functions that can only be used by Kotlin.
+-dontwarn retrofit2.-KotlinExtensions
+
+-keep com.edwinnyawoli.templateapplication.data.model.** {
+    *;
+}
+
+-keep com.edwinnyawoli.templateapplication.data.remote.** {
+    *;
+}
