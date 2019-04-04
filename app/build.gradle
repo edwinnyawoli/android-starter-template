@@ -45,9 +45,10 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(':data')
     implementation project(':presentation')
+    implementation project(':common')
 
     // Data dependencies
-    implementation "org.projectlombok:lombok:${versions.deps.lombok}"
+    compileOnly "org.projectlombok:lombok:${versions.deps.lombok}"
     annotationProcessor "org.projectlombok:lombok:${versions.deps.lombok}"
 
     implementation "io.reactivex.rxjava2:rxandroid:${versions.deps.rx.android}"
@@ -58,6 +59,7 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:${versions.deps.supportLib}"
     implementation "com.android.support:design:${versions.deps.supportLib}"
     implementation "com.android.support:support-v4:${versions.deps.supportLib}"
+    implementation "com.android.support:exifinterface:${versions.deps.supportLib}"
     implementation "android.arch.core:runtime:${versions.deps.arch.core}"
     implementation "com.android.support.constraint:constraint-layout:${versions.deps.constraintlayout}"
     implementation "com.jakewharton.threetenabp:threetenabp:${versions.deps.threetenabp}"
@@ -65,8 +67,8 @@ dependencies {
     implementation "com.github.hotchemi:permissionsdispatcher:${versions.deps.permissiondispatcher}"
     annotationProcessor "com.github.hotchemi:permissionsdispatcher-processor:${versions.deps.permissiondispatcher}"
     implementation "com.github.Kennyc1012:MultiStateView:${versions.deps.multistateview}"
-    implementation "com.airbnb.android:epoxy:${versions.deps.epoxy}"
-    annotationProcessor "com.airbnb.android:epoxy-processor:${versions.deps.epoxy}"
+    implementation "android.arch.lifecycle:extensions:1.1.1"
+    implementation "android.arch.lifecycle:viewmodel:1.1.1"
 
     // DI dependencies
     implementation "com.google.dagger:dagger:${versions.deps.dagger}"
@@ -85,5 +87,4 @@ dependencies {
     androidTestImplementation "com.android.support.test:runner:${versions.deps.test.runner}"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:${versions.deps.test.espresso}"
     testImplementation "org.mockito:mockito-core:${versions.deps.test.mockito}"
-
 }
