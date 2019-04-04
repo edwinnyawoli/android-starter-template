@@ -2,6 +2,7 @@ package com.edwinnyawoli.templateapplication;
 
 import com.edwinnyawoli.templateapplication.di.DaggerAppComponent;
 import com.edwinnyawoli.templateapplication.log.CrashlyticsTree;
+import com.jakewharton.threetenabp.AndroidThreeTen;
 
 import dagger.android.AndroidInjector;
 import dagger.android.support.DaggerApplication;
@@ -17,6 +18,7 @@ public class TemplateApplication extends DaggerApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        AndroidThreeTen.init(this);
     }
 
     @Override
@@ -33,6 +35,8 @@ public class TemplateApplication extends DaggerApplication {
 
         return DaggerAppComponent.builder()
                 .loggingLevel(loggingLevel)
+                .context(this)
+                .baseUrl("http://127.0.0.1/")
                 .create(this);
     }
 }
