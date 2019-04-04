@@ -1,12 +1,15 @@
-package com.edwinnyawoli.templateapplication.di.module;
+package com.edwinnyawoli.templateapplication.data;
 
+import com.edwinnyawoli.templateapplication.common.annotations.AppScope;
+import com.edwinnyawoli.templateapplication.common.concurrency.SchedulersModule;
 import com.edwinnyawoli.templateapplication.data.remote.Api;
+import com.edwinnyawoli.templateapplication.data.serializer.InstantSerializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.concurrent.TimeUnit;
+import org.threeten.bp.Instant;
 
-import javax.inject.Singleton;
+import java.util.concurrent.TimeUnit;
 
 import dagger.Module;
 import dagger.Provides;
@@ -23,7 +26,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class NetModule {
     @Provides
-    @Singleton
+    @AppScope
     static Api provideApi(Gson gson, OkHttpClient okHttpClient,
                           @Api.BaseUrl String baseUrl,
                           @SchedulersModule.IO Scheduler ioScheduler) {
@@ -39,6 +42,7 @@ public class NetModule {
     @Provides
     static Gson provideGson() {
         return new GsonBuilder()
+                .registerTypeAdapter(Instant.class, new InstantSerializer())
                 .setDateFormat("yyyy-MM-dd HH:mm:ss")
                 .create();
     }

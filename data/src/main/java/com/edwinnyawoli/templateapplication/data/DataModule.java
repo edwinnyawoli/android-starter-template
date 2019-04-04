@@ -1,11 +1,10 @@
-package com.edwinnyawoli.templateapplication.di.module;
+package com.edwinnyawoli.templateapplication.data;
 
 import android.arch.persistence.room.Room;
 import android.content.Context;
 
+import com.edwinnyawoli.templateapplication.common.annotations.AppScope;
 import com.edwinnyawoli.templateapplication.data.local.AppDatabase;
-
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -16,7 +15,7 @@ import dagger.Provides;
 @Module
 public class DataModule {
     @Provides
-    @Singleton
+    @AppScope
     static AppDatabase provideAppDatabase(Context context) {
         return Room.databaseBuilder(context.getApplicationContext(),
                 AppDatabase.class, AppDatabase.NAME).build();
