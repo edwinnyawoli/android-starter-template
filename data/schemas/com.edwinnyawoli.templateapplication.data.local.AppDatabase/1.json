@@ -2,18 +2,12 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "3de846dea952f86776b2256b9ad18d41",
+    "identityHash": "8d209da2e09da389b7d092b48c83854d",
     "entities": [
       {
         "tableName": "TestModelEntity",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`autoId` INTEGER NOT NULL, `id` INTEGER NOT NULL, PRIMARY KEY(`autoId`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
         "fields": [
-          {
-            "fieldPath": "autoId",
-            "columnName": "autoId",
-            "affinity": "INTEGER",
-            "notNull": true
-          },
           {
             "fieldPath": "id",
             "columnName": "id",
@@ -23,9 +17,9 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "autoId"
+            "id"
           ],
-          "autoGenerate": false
+          "autoGenerate": true
         },
         "indices": [],
         "foreignKeys": []
@@ -33,7 +27,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"3de846dea952f86776b2256b9ad18d41\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"8d209da2e09da389b7d092b48c83854d\")"
     ]
   }
 }

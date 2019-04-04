@@ -1,15 +1,15 @@
 package com.edwinnyawoli.templateapplication.data.remote;
 
+import com.edwinnyawoli.templateapplication.common.annotations.AppScope;
 import com.edwinnyawoli.templateapplication.domain.model.User;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 /**
  *
  */
 
-@Singleton
+@AppScope
 public class SessionManager {
     private User loggedInUser;
 
